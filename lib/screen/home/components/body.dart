@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import './to_do_tile.dart';
+import '../../../data/to_do.dart';
+
 class Body extends StatefulWidget {
   const Body({super.key});
 
@@ -8,18 +11,15 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  List<Map<String, Object>> toDoList = [
-    {'title': 'SDA lab 2', 'taskCompleted': true},
-    {'title': 'SDA lab 3', 'taskCompleted': false},
-    {'title': 'SDA lab 4', 'taskCompleted': true},
-    {'title': 'HIVE FLUTTER', 'taskCompleted': false},
-  ];
-
   void checkBoxTick(int index) {
     setState(() {
-      toDoList[index]["taskCompleted"] =
-          !(toDoList[index]["taskCompleted"] as bool);
+      ToDos.toDoList[index].taskCompleted =
+          !ToDos.toDoList[index].taskCompleted;
     });
+  }
+
+  void referesh() {
+    print('function from body');
   }
 
   @override
@@ -27,56 +27,11 @@ class _BodyState extends State<Body> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: ListView.builder(
-        itemCount: toDoList.length,
+        itemCount: ToDos.toDoList.length,
         itemBuilder: (context, index) => ToDoTile(
-          title: toDoList[index]["title"] as String,
-          taskCompleted: toDoList[index]["taskCompleted"] as bool,
+          title: ToDos.toDoList[index].title,
+          taskCompleted: ToDos.toDoList[index].taskCompleted,
           press: (p0) => checkBoxTick(index),
-        ),
-      ),
-    );
-  }
-}
-
-class ToDoTile extends StatelessWidget {
-  const ToDoTile({
-    super.key,
-    required this.title,
-    required this.taskCompleted,
-    this.press,
-  });
-  final String title;
-  final bool taskCompleted;
-  final Function(bool?)? press;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 15),
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: Theme.of(context).primaryColor.withOpacity(0.7),
-        ),
-        child: Row(
-          children: [
-            Checkbox(
-              value: taskCompleted,
-              onChanged: press,
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Text(
-                title,
-                style: TextStyle(
-                  decoration: (taskCompleted)
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none,
-                ),
-              ),
-            ),
-          ],
         ),
       ),
     );
