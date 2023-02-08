@@ -20,9 +20,10 @@ class _BodyState extends State<Body> {
 
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
-    ToDos.updateDb();
+    ToDos.loadData();
   }
 
   @override

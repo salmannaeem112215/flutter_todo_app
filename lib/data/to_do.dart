@@ -18,11 +18,18 @@ class ToDos {
   }
 
   static void loadData() {
-    toDoList = _myBox.get('ToDos');
-    print(_myBox.get('ToDos').toString());
+    final data = _myBox.get('ToDos');
+    if (data != null) toDoList = data;
+  }
+
+  static int getLengt() {
+    final List? data = _myBox.get('ToDos');
+    if (data == null) return 0;
+    return data.length;
   }
 
   static void updateDb() {
     _myBox.put('ToDos', toDoList);
+    print(getLengt().toString());
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_todo_app/constants.dart';
-import '../../../data/to_do.dart';
 
 class ToDoAddCard extends StatelessWidget {
   const ToDoAddCard({
@@ -18,7 +17,7 @@ class ToDoAddCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Theme.of(context).canvasColor,
+      backgroundColor: kBackgroundColor,
       content: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
