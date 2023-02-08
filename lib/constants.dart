@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 const kBackgroundColor = Color(0xFFE5EAEE);
-const kPrimaryLighColor = Color(0xFF6493B8);
+const kPrimaryLightColor = Color(0xFF85B0D1);
 const kPrimaryColor = Color(0xFF6493B8);
 const kDarkPrimaryColor = Color(0xFF2D465A);
 const kGreyTextColor = Color(0xFFCBCBCB);
 const kSideBarDividerColor = Color.fromARGB(127, 45, 70, 90);
+const kDangerColor = Color(0xFFB22222);
+// const kDangerColor = Color(0xFFC50F1F);
 
 const MaterialColor kPrimarySwatch = MaterialColor(0xFF6493B8, {
   50: Color(0xFFD7D6EE),

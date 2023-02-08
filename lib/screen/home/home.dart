@@ -21,6 +21,8 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         elevation: 1,
       ),
+      // const will not refersh body
+      // ignore: prefer_const_constructors
       body: Body(),
       floatingActionButton: FloatingActionButton(
         onPressed: () => addToDo(context),

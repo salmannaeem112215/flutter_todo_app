@@ -18,10 +18,6 @@ class _BodyState extends State<Body> {
     });
   }
 
-  void referesh() {
-    print('function from body');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,6 +28,11 @@ class _BodyState extends State<Body> {
           title: ToDos.toDoList[index].title,
           taskCompleted: ToDos.toDoList[index].taskCompleted,
           press: (p0) => checkBoxTick(index),
+          deleteFunction: () {
+            setState(() {
+              ToDos.deleteToDo(index);
+            });
+          },
         ),
       ),
     );

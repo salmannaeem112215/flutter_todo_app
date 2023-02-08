@@ -20,4 +20,10 @@ class ToDos {
     toDoList.add(ToDo(title: title, taskCompleted: taskCompleted));
     print('Added');
   }
+
+  static void deleteToDo(int index) {
+    if (index < toDoList.length) {
+      toDoList.removeAt(index);
+    }
+  }
 }
