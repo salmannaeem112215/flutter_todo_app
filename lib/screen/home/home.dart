@@ -43,6 +43,7 @@ class _HomeState extends State<Home> {
             onSave: () {
               setState(() {
                 ToDos.addToDo(_controller.text, false);
+                ToDos.updateDb();
                 Navigator.of(context).pop();
               });
             },

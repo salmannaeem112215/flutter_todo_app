@@ -13,9 +13,16 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   void checkBoxTick(int index) {
     setState(() {
-      ToDos.toDoList[index].taskCompleted =
-          !ToDos.toDoList[index].taskCompleted;
+      ToDos.toDoList[index][1] = !ToDos.toDoList[index][1];
+      ToDos.updateDb();
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ToDos.updateDb();
   }
 
   @override
@@ -25,12 +32,13 @@ class _BodyState extends State<Body> {
       child: ListView.builder(
         itemCount: ToDos.toDoList.length,
         itemBuilder: (context, index) => ToDoTile(
-          title: ToDos.toDoList[index].title,
-          taskCompleted: ToDos.toDoList[index].taskCompleted,
+          title: ToDos.toDoList[index][0],
+          taskCompleted: ToDos.toDoList[index][1],
           press: (p0) => checkBoxTick(index),
           deleteFunction: () {
             setState(() {
               ToDos.deleteToDo(index);
+              ToDos.updateDb();
             });
           },
         ),
